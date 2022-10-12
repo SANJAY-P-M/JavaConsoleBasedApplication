@@ -1,8 +1,6 @@
 import java.util.Scanner;
 public class Driver {
     public static void main(String[] a){
-        String name1;
-        String name2;
         Bus b1;
         Truck t1;
         byte option = 0;
@@ -26,6 +24,8 @@ public class Driver {
                     option = scan.nextByte();
                     scan.nextLine();
                     if(option == 1){
+                        String name1;
+                        String name2;
                         System.out.print("Enter Driver name : ");
                         name1 = scan.nextLine();
                         System.out.print("Enter Conductor name : ");
@@ -84,7 +84,7 @@ public class Driver {
                     option = scan.nextByte();
                     scan.nextLine();
                     if(option == 1)
-                    {
+                    {   String name1;
                         System.out.print("Enter Driver name : ");
                         name1 = scan.nextLine();
                         t1 = new Truck(load,name1);
@@ -127,5 +127,6 @@ public class Driver {
                     break;    
             }
         }
+        scan.close();
     }
 }
