@@ -1,11 +1,12 @@
+                                            /*   SINGLE LEVEL INHERITANCE    */
 public class Vehicle extends Vehicleabs{
     public Vehicle(){
         super();
     }
     public Vehicle(String driverName,String helperName){
-        super(driverName, helperName);
+        super(driverName, helperName);                      /* SUPER KEYWORD */
     }
-    void setDriverName(String a){
+    void setDriverName(String a){                           /* OVERRIDING  METHODS IN ABSTRACT CLASS :)*/
         this.driverName = a;
     }
     String getDriverName() {

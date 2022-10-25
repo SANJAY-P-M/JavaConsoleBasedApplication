@@ -1,3 +1,4 @@
+                                    /* HIERARCHICAL + MULTILEVEL INHERITANCE = HYBRID INHERITANCE  */
 public class Truck extends Vehicle {
     static int numberOfTrucks;
     protected int loadCapacity;

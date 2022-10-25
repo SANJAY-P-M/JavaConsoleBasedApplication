@@ -1,3 +1,4 @@
+                                    /* HIERARCHICAL + MULTILEVEL INHERITANCE = HYBRID INHERITANCE  */
 public class Bus extends Vehicle{
     static int numberOfBuses;
     private int availableSeats;
@@ -21,7 +22,7 @@ public class Bus extends Vehicle{
         this.availableSeats = this.totalNumberOfSeats;
     }
     public Bus(){
-        super();
+        super();                    /*It is a optional line added default during compile time */
         helperName = "No helper allocated";
         numberOfBuses++;
         this.vehicleNumber = numberOfBuses;
