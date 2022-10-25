@@ -1,35 +1,33 @@
-public class Truck {
+public class Truck extends Vehicle {
     static int numberOfTrucks;
-    protected int truckNumber;
-    protected String driverName= "No driver allocated";
     protected int loadCapacity;
-    public Truck(int load,String driverName){
+    public Truck(int load,String driverName,String helperName){
+        super(driverName,helperName);
         numberOfTrucks++;
-        this.truckNumber = numberOfTrucks;
-        this.driverName = driverName;
+        this.vehicleNumber = numberOfTrucks;
         this.loadCapacity = load;
     }
     public Truck(){
+        super();
         numberOfTrucks++;
-        this.truckNumber = numberOfTrucks;
+        this.vehicleNumber = numberOfTrucks;
         this.loadCapacity = 10;
     }
     public Truck(int num){
+        super();
         numberOfTrucks++;
-        this.truckNumber = numberOfTrucks;
+        this.vehicleNumber = numberOfTrucks;
         this.loadCapacity = num;
     }
     public void printAllDetails(){
         System.out.println();
-        System.out.println("        --Truck Number  : "+this.truckNumber);
+        System.out.println("        --Truck Number  : "+this.vehicleNumber);
         System.out.println("        --Driver Name   : "+this.driverName);
+        System.out.println("        --Helper Name   : "+this.helperName);
         System.out.println("        --Load capacity : "+this.loadCapacity +" Tons");
         System.out.println();
     }
-    public void setDriverName(String name){
-        this.driverName = name;
-    }
-    public boolean isCheckCapacity(int num){
+    public boolean isCapacityAvailable(int num){
         return (this.loadCapacity >= num);
     }
 }

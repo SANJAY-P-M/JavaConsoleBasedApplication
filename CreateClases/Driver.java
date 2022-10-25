@@ -14,7 +14,7 @@ public class Driver {
             option = scan.nextByte();
             switch(option){
                 case 1:
-                    System.out.print("Enter number of seats available in bus : ");
+                    System.out.print("Enter number of seats available in bus your : ");
                     int seats;
                     seats = scan.nextInt();
                     System.out.println("    Is Driver and Conductor name available : ");
@@ -54,17 +54,17 @@ public class Driver {
                                 break;
                             case 2:
                                 System.out.print("Enter conductor name : ");
-                                b1.setConductorName(scan.nextLine());
+                                b1.setHelperName(scan.nextLine());
                                 break;
                             case 3:
-                                System.out.println("Available seats : "+b1.isSeatAvailable());
+                                System.out.println("Available seats : "+b1.getAvailableSeats());
                                 break;
                             case 4:
                                 System.out.print("Enter no of seats to book : ");
                                 b1.bookSeat(scan.nextInt());
                                 break;
                             case 5:
-                                Bus.showNumberOfBuses();
+                                System.out.print("Number of Buses Available" + Bus.showNumberOfBuses());
                                 break;
                             case 6:
                                 b1.printAllDetails();
@@ -77,17 +77,19 @@ public class Driver {
                     System.out.print("Enter load capacity of truck : ");
                     int load;
                     load = scan.nextInt();
-                    System.out.println("    Is Driver name available : ");
+                    System.out.println("    Is Driver and helper name available : ");
                     System.out.println("        1) YES");
                     System.out.println("        2) NO");
                     System.out.print("Enter your choice : ");
                     option = scan.nextByte();
                     scan.nextLine();
                     if(option == 1)
-                    {   String name1;
+                    {   String name1,name2;
                         System.out.print("Enter Driver name : ");
                         name1 = scan.nextLine();
-                        t1 = new Truck(load,name1);
+                        System.out.print("Enter Helper name : ");
+                        name2 = scan.nextLine();
+                        t1 = new Truck(load,name1,name2);
                     }
                     else
                         t1 = new Truck(load);
@@ -108,7 +110,7 @@ public class Driver {
                                 break;
                             case 2:
                                 System.out.print("Enter your maximum load capacity : ");
-                                if(t1.isCheckCapacity(scan.nextInt()))
+                                if(t1.isCapacityAvailable(scan.nextInt()))
                                     System.out.printf("%n        ***Yes this can truck carry your load*** %n%n");
                                 else
                                 {
