@@ -1,7 +1,6 @@
                                     /* HIERARCHICAL + MULTILEVEL INHERITANCE = HYBRID INHERITANCE  */
-public class Bus extends Vehicle{
+public class Bus extends Vehicle implements FourWheelerTravelTransport{ // Bus Implements FourWheelerTravelTransport
     static int numberOfBuses;
-    private int availableSeats;
     private int bookedSeats;
     private int totalNumberOfSeats;
     static int showNumberOfBuses(){
@@ -12,14 +11,12 @@ public class Bus extends Vehicle{
         numberOfBuses++;
         this.vehicleNumber = numberOfBuses;
         this.totalNumberOfSeats = totalNumberOfSeats;
-        this.availableSeats = totalNumberOfSeats;
     }
     public Bus(int num){
         numberOfBuses++;
         helperName = "No helper allocated";
         this.vehicleNumber = numberOfBuses;
         this.totalNumberOfSeats = num;
-        this.availableSeats = this.totalNumberOfSeats;
     }
     public Bus(){
         super();                    /*It is a optional line added default during compile time */
@@ -27,7 +24,6 @@ public class Bus extends Vehicle{
         numberOfBuses++;
         this.vehicleNumber = numberOfBuses;
         this.totalNumberOfSeats = 100;
-        this.availableSeats = this.totalNumberOfSeats;
     }
     public void printAllDetails(){
         System.out.println();
@@ -36,21 +32,21 @@ public class Bus extends Vehicle{
         System.out.println("        --helper Name                    : "+this.helperName);
         System.out.println("        --Total no of seats in bus          : "+this.totalNumberOfSeats);
         System.out.println("        --Total no of booked seats in bus   : "+this.bookedSeats);
-        System.out.println("        --Total no of available seats in bus: "+this.availableSeats);
+        System.out.println("        --Total no of available seats in bus: "+(this.totalNumberOfSeats - this.bookedSeats));
         System.out.println();
     }
+    @Override
     public int getAvailableSeats(){
-        return this.availableSeats;
+        return (this.totalNumberOfSeats - this.bookedSeats) ;
     }
     public boolean isSeatAvailable(int num){
-        return (availableSeats >= num);
+        return ((this.totalNumberOfSeats - this.bookedSeats) >= num);
     }
     public void bookSeat(int num){
         if(this.isSeatAvailable(num)){
-            this.availableSeats -= num;
             this.bookedSeats += num;
         }
         else
-            System.out.println("Sorry doode available seats = "+this.availableSeats);
+            System.out.println("Sorry doode available seats = "+(this.totalNumberOfSeats - this.bookedSeats));
     }
 }

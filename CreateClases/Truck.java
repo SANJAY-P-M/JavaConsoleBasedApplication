@@ -1,5 +1,5 @@
                                     /* HIERARCHICAL + MULTILEVEL INHERITANCE = HYBRID INHERITANCE  */
-public class Truck extends Vehicle {
+public class Truck extends Vehicle implements FourWheelerLoadTransport {//Implements the interface FourWheelerLoadTransport 
     static int numberOfTrucks;
     protected int loadCapacity;
     public Truck(int load,String driverName,String helperName){
@@ -28,7 +28,11 @@ public class Truck extends Vehicle {
         System.out.println("        --Load capacity : "+this.loadCapacity +" Tons");
         System.out.println();
     }
+    @Override
     public boolean isCapacityAvailable(int num){
         return (this.loadCapacity >= num);
+    }
+    public int getLoadCapacity() {
+        return (this.loadCapacity);
     }
 }
