@@ -1,21 +1,26 @@
                                             /*   SINGLE LEVEL INHERITANCE    */
-public class Vehicle extends Vehicleabs{
+public abstract class Vehicle{
+    protected String driverName;
+    protected int vehicleNumber;
+    protected String helperName;
     public Vehicle(){
-        super();
+        this.setDriverName("No driver Allocated");
     }
     public Vehicle(String driverName,String helperName){
-        super(driverName, helperName);                      /* SUPER KEYWORD */
+        this.setDriverName(driverName);
+        this.setHelperName(helperName);           
     }
-    void setDriverName(String a){                           /* OVERRIDING  METHODS IN ABSTRACT CLASS :)*/
+    public void setDriverName(String a){                         
         this.driverName = a;
     }
-    String getDriverName() {
+    public String getDriverName() {
         return driverName;
     }
-    void setHelperName(String a){
+    public void setHelperName(String a){
         this.helperName = a;
     }
-    String getHelperName() {
+    public String getHelperName() {
         return this.helperName;
     }
+    abstract void printAllDetails();
 }

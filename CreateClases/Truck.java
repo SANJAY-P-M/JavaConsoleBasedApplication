@@ -20,6 +20,7 @@ public class Truck extends Vehicle implements FourWheelerLoadTransport {//Implem
         this.vehicleNumber = numberOfTrucks;
         this.loadCapacity = num;
     }
+    @Override //Overriding abstract method from vehicle
     public void printAllDetails(){
         System.out.println();
         System.out.println("        --Truck Number  : "+this.vehicleNumber);
@@ -28,9 +29,11 @@ public class Truck extends Vehicle implements FourWheelerLoadTransport {//Implem
         System.out.println("        --Load capacity : "+this.loadCapacity +" Tons");
         System.out.println();
     }
-    @Override
     public boolean isCapacityAvailable(int num){
         return (this.loadCapacity >= num);
+    }
+    public boolean isCapacityAvailable(){
+        return (this.loadCapacity > 0);
     }
     public int getLoadCapacity() {
         return (this.loadCapacity);

@@ -3,9 +3,6 @@ public class Bus extends Vehicle implements FourWheelerTravelTransport{ // Bus I
     static int numberOfBuses;
     private int bookedSeats;
     private int totalNumberOfSeats;
-    static int showNumberOfBuses(){
-        return numberOfBuses;
-    }
     public Bus(int totalNumberOfSeats,String driverName,String helperName){
         super(driverName,helperName);
         numberOfBuses++;
@@ -25,6 +22,7 @@ public class Bus extends Vehicle implements FourWheelerTravelTransport{ // Bus I
         this.vehicleNumber = numberOfBuses;
         this.totalNumberOfSeats = 100;
     }
+    @Override //Overriding abstract method from vehicle
     public void printAllDetails(){
         System.out.println();
         System.out.println("        --Bus Number                        : "+this.vehicleNumber);
@@ -35,7 +33,7 @@ public class Bus extends Vehicle implements FourWheelerTravelTransport{ // Bus I
         System.out.println("        --Total no of available seats in bus: "+(this.totalNumberOfSeats - this.bookedSeats));
         System.out.println();
     }
-    @Override
+    @Override       //Implements FourWheelerTravelTransport interface
     public int getAvailableSeats(){
         return (this.totalNumberOfSeats - this.bookedSeats) ;
     }

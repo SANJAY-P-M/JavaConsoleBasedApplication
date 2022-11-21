@@ -7,6 +7,7 @@ public class Driver {
     public static void main(String[] a){
         Bus b1;
         Truck t1;
+        Vehicle v;
         byte option = 0;
         Scanner scan = new Scanner(System.in);
         while(option != 3)
@@ -35,9 +36,12 @@ public class Driver {
                         System.out.print("Enter Conductor name : ");
                         name2 = scan.nextLine();
                         b1 = new Bus(seats,name1,name2);
+                        v = b1;
                     }
-                    else
+                    else{
                         b1 = new Bus(seats);
+                        v = b1;
+                    }
                     while(option != 7)
                     {    
                         System.out.printf("%n    1) Set driver%n");
@@ -68,10 +72,10 @@ public class Driver {
                                 b1.bookSeat(scan.nextInt());
                                 break;
                             case 5:
-                                System.out.print("Number of Buses Available" + Bus.showNumberOfBuses());
+                                System.out.print("Number of Buses Available" + Bus.numberOfBuses);
                                 break;
                             case 6:
-                                b1.printAllDetails();
+                                v.printAllDetails();// Implements dynamic polymorphism
                                 break;
                             
                         }
@@ -94,9 +98,12 @@ public class Driver {
                         System.out.print("Enter Helper name : ");
                         name2 = scan.nextLine();
                         t1 = new Truck(load,name1,name2);
+                        v = t1;
                     }
-                    else
+                    else{
                         t1 = new Truck(load);
+                        v = t1;
+                    }
                     while(option != 5)
                     {    
                         System.out.printf("%n    1) Set driver%n");
@@ -111,23 +118,37 @@ public class Driver {
                             case 1:
                                 System.out.print("Enter driver name : ");
                                 t1.setDriverName(scan.nextLine());
-                                break;
+                            break;
                             case 2:
-                                System.out.print("Enter your maximum load capacity : ");
-                                if(t1.isCapacityAvailable(scan.nextInt()))
-                                    System.out.printf("%n        ***Yes this can truck carry your load*** %n%n");
-                                else
-                                {
-                                    System.out.printf("%n        **Sorry doode check for other trucks**%n");
-                                    System.out.printf("          **Current trucks load capacity is : %d**%n%n",t1.loadCapacity);
+                                System.out.printf("1) Check for your load capacity%n2) Just check if capacity available");
+                                byte choice = scan.nextByte();
+                                switch(choice){
+                                    case 1:
+                                        System.out.print("Enter your maximum load capacity : ");
+                                        if(t1.isCapacityAvailable(scan.nextInt()))     // calling a overloaded function function  
+                                            System.out.printf("%n        ***Yes this can truck carry your load*** %n%n");
+                                        else
+                                        {
+                                            System.out.printf("%n        **Sorry doode check for other trucks**%n");
+                                            System.out.printf("          **Current trucks load capacity is : %d**%n%n",t1.loadCapacity);
+                                        }
+                                    break;
+                                    case 2:
+                                        if(t1.isCapacityAvailable())                  //This implements a static polymorphism || Method binding occurs during compile time
+                                            System.out.printf("%n        ***Yes this can truck carry your load*** %n%n");
+                                        else
+                                        {
+                                            System.out.printf("%n        **Sorry doode check for other trucks**%n");
+                                            System.out.printf("          **Truck is full :( **%n%n");
+                                        }
                                 }
-                                break;
+                            break;
                             case 3:
                                 System.out.println("Available trucks by SRT : "+Truck.numberOfTrucks);
-                                break;
+                            break;
                             case 4:
-                                t1.printAllDetails();
-                                break;
+                                v.printAllDetails();// Implements dynamic polymorphism
+                            break;
                         }
                     }
                     break;    
