@@ -19,7 +19,7 @@ public class Driver {
             option = scan.nextByte();
             switch(option){
                 case 1:
-                    System.out.print("Enter number of seats available in bus your : ");
+                    System.out.print("Enter number of seats available in your bus: ");
                     int seats;
                     seats = scan.nextInt();
                     System.out.println("    Is Driver and Conductor name available : ");
@@ -42,7 +42,7 @@ public class Driver {
                         b1 = new Bus(seats);
                         v = b1;
                     }
-                    while(option != 7)
+                    while(option != 8)
                     {    
                         System.out.printf("%n    1) Set driver%n");
                         System.out.println("    2) Set Conductor");
@@ -50,7 +50,8 @@ public class Driver {
                         System.out.println("    4) Book seats");
                         System.out.println("    5) Check total number of bus owned by SRT travels");
                         System.out.println("    6) Print all details of Bus");
-                        System.out.printf("    7) exit%n%n");
+                        System.out.println("    7) Get my seat no with ticket code");
+                        System.out.printf("    8) exit%n%n");
                         System.out.print("Enter your choice : ");
                         option = scan.nextByte();
                         scan.nextLine();
@@ -69,7 +70,17 @@ public class Driver {
                                 break;
                             case 4:
                                 System.out.print("Enter no of seats to book : ");
-                                b1.bookSeat(scan.nextInt());
+                                int noOfSeats = scan.nextInt();
+                                if(noOfSeats <= b1.getAvailableSeats()){
+                                    int bookSeats[] = new int[noOfSeats];
+                                    for(int i = 0;i < noOfSeats;i++){
+                                        System.out.printf("Enter seat no  %d : ",i+1);
+                                        bookSeats[i] = scan.nextInt();
+                                    }
+                                    b1.bookSeat(bookSeats);
+                                }
+                                else
+                                    System.out.println("Seats not Available");
                                 break;
                             case 5:
                                 System.out.print("Number of Buses Available" + Bus.numberOfBuses);
@@ -77,10 +88,17 @@ public class Driver {
                             case 6:
                                 v.printAllDetails();// Implements dynamic polymorphism
                                 break;
-                            
+                            case 7:
+                                System.out.print("Enter your ticket code : ");
+                                String s = scan.next();
+                                if(b1.getSeatNoWithTicketCode(s) != -1)
+                                    System.out.printf("Your seat no is %d%n",b1.getSeatNoWithTicketCode(s));
+                                else
+                                    System.out.println("Invalid ticket code");
+                            break;
                         }
                     }
-                    break;
+                break;
                 case 2:
                     System.out.print("Enter load capacity of truck : ");
                     int load;
